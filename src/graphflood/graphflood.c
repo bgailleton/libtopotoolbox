@@ -429,6 +429,10 @@ void _graphflood_full_mfd(
     // ------------------------------------------------------------------------
 
     for (GF_UINT node = 0; node < nxy(dim); ++node) {
+
+      // Skip boundary cells that discharge out of domain
+      if (can_out(node, BCs)) continue;
+      
       // ----------------------------------------------------------------------
       // CONTINUITY EQUATION: Update hydraulic surface
       // ----------------------------------------------------------------------
